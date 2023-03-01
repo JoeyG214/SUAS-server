@@ -1,0 +1,29 @@
+{
+  "name": "suas-server",
+  "version": "1.0.0",
+  "description": "Server for Student Unmanned Aerial Systems Club at USF",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeyG214/SUAS-server.git"
+  },
+  "author": "SUAS Club",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoeyG214/SUAS-server/issues"
+  },
+  "homepage": "https://github.com/JoeyG214/SUAS-server#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "nodemon": "^2.0.20"
+  }
+}
