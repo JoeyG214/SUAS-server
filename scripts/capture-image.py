@@ -1,19 +1,27 @@
 from picamera2 import Picamera2, Preview
 from datetime import datetime
-import shutil
+import glob
+#import shutil
 import time
 import os
 
 # Specifies directory where captured images are stored
 images_directory = os.path.expanduser('~/web/SUAS-server/images')
 
-# Removes directory if exists
-if os.path.exists(images_directory):
-    shutil.rmtree(images_directory)
+def remove_files_in_dir(directory):
+    files = glob.glob(f'{directory}')
+    for file in files:
+        os.remove(file)
 
-# Creates directory if exists
-if not os.path.exists(images_directory):
-    os.makedirs(images_directory)
+remove_files_in_dir(images_directory)
+
+# # Removes directory if exists
+# if os.path.exists(images_directory):
+#     shutil.rmtree(images_directory)
+
+# # Creates directory if exists
+# if not os.path.exists(images_directory):
+#     os.makedirs(images_directory)
 
 # Camera intiialization, configuration, and preview
 picam2 = Picamera2()
