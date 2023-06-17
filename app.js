@@ -1,26 +1,29 @@
 // Imports
 const express = require('express')
-const app = express()
 const cors = require('cors')
 const morgan = require('morgan')
-const contactsRouter = require('./controllers/contacts')
-//const bodyParser = require("body-parser");
-const mongoose = require('mongoose')
+//const mongoose = require('mongoose')
+const path = require('path')
+const scriptsRouter = require('./controllers/scripts')
 
-mongoose.connect("mongodb://localhost:27017/suas", {
-   useNewUrlParser: true,
-   useUnifiedTopology: true
-})
+// Initialize Express App
+const app = express()
+
+// // Mongoose Connection
+// mongoose.connect("mongodb://localhost:27017/suas", {
+//    useNewUrlParser: true,
+//    useUnifiedTopology: true
+// })
 
 // Middleware
-app.use(morgan('dev'))
 app.use(cors())
-app.use(express.static('build'))
-app.use(express.json({ extended: false }))
-//app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('dist'))
+app.use(express.json())
+app.use('/images', express.static(path.join(__dirname, 'images')))
+app.use(morgan('dev'))
 
 // Routes
-app.use('/contacts', contactsRouter)
+app.use('/api/scripts', scriptsRouter)
 
 // Export App
 module.exports = app
